@@ -1,7 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PokemonDetail from "./pages/PokemonDetail";
+
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">Hello Pokedex</h1>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon/:name" element={<PokemonDetail />} />
+          {/* Catch-all route */}
+          <Route
+            path="*"
+            element={<p className="text-center mt-10">Page not found</p>}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
